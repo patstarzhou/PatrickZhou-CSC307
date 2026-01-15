@@ -1,7 +1,7 @@
 // src/MyApp.jsx
 import React, { useState } from "react";
 import Table from "./Table";
-//our array of objects 
+//our array of object
 function MyApp() {
     const [characters, setCharacters] = useState([
     {
@@ -18,7 +18,7 @@ function MyApp() {
     },
     {
       name: "Dennis",
-      job: "Bartender"
+      job: "Bartender" 
     }
   ]);
     function removeOneCharacter(index) {

@@ -49,5 +49,5 @@ function Table(props) {
 export default Table;
 
 //Table Header and Table Body components are all in the same file and are being used 
-//by the table compnent.
+//by the table compnent
 //All related so no need to be in diff files
