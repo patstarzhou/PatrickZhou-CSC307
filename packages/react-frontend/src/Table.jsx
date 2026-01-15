@@ -2,7 +2,6 @@
 //custom HTML table we created with React component 
 import React from "react";
 
-
 function TableHeader() {
   return (
     <thead>
@@ -30,7 +29,11 @@ function TableBody(props) {
     );
   });
 
-  return <tbody>{rows}</tbody>;
+  return (
+    <tbody>
+      {rows}
+    </tbody>
+  );
 }
 
 
