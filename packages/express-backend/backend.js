@@ -27,6 +27,12 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
+const addUser = (user) => {
+  users.users_list.push(user);
+  return user;
+};
+
+
 app.get("/users", (req, res) => {
   const name = req.query.name;
 
@@ -38,6 +44,13 @@ app.get("/users", (req, res) => {
   }
 });
 
+app.post("/users", (req, res) => {
+  const userToAdd = req.body;
+  addUser(userToAdd);
+  res.send();
+});
+
+
 app.get("/users/:id", (req, res) => {
   const id = req.params.id; // same as req.params["id"]
   const result = findUserById(id);
@@ -48,7 +61,6 @@ app.get("/users/:id", (req, res) => {
     res.send(result);
   }
 });
-
 
 
 app.listen(port, () => {
