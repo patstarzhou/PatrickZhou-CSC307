@@ -1,0 +1,19 @@
+{
+  "name": "express-backend",
+  "version": "1.0.0",
+  "description": "express backend for ie2",
+  "keywords": [
+    "backend",
+    "express"
+  ],
+  "license": "ISC",
+  "author": "Patrick Zhou",
+  "type": "module",
+  "main": "backend.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
