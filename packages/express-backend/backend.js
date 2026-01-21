@@ -32,17 +32,38 @@ const addUser = (user) => {
   return user;
 };
 
+const deleteUserById = (id) => {
+  const index = users.users_list.findIndex((user) => user.id === id);
+
+  if (index === -1) {
+    return false; // not found
+  }
+
+  users.users_list.splice(index, 1); // remove 1 element at index
+  return true; // deleted
+};
+
+const findUsersByNameAndJob = (name, job) => {
+  return users.users_list.filter(
+    (user) => user.name === name && user.job === job
+  );
+};
 
 app.get("/users", (req, res) => {
   const name = req.query.name;
+  const job = req.query.job;
 
-  if (name !== undefined) {
+  if (name !== undefined && job !== undefined) {
+    const result = findUsersByNameAndJob(name, job);
+    res.send({ users_list: result });
+  } else if (name !== undefined) {
     const result = findUserByName(name);
     res.send({ users_list: result });
   } else {
     res.send(users);
   }
 });
+
 
 app.post("/users", (req, res) => {
   const userToAdd = req.body;
@@ -61,6 +82,18 @@ app.get("/users/:id", (req, res) => {
     res.send(result);
   }
 });
+
+app.delete("/users/:id", (req, res) => {
+  const id = req.params.id;
+  const deleted = deleteUserById(id);
+
+  if (!deleted) {
+    res.status(404).send("Resource not found.");
+  } else {
+    res.send();
+  }
+});
+
 
 
 app.listen(port, () => {
